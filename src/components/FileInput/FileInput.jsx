@@ -1,28 +1,36 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class FileInput extends Component {
-  constructor(props) {
-    super(props);
-    this.fileInput = React.createRef();
-  }
-  handleSubmit(e) {
+function FileInput() {
 
+  const fileInput = React.createRef();
+
+  function handleChange(e){    
     e.preventDefault();
-    alert(
-      `Selected file - ${this.fileInput.current.files[0].name}`
-    );
+
+    if(e.target.files.length == 0){
+      alert('низя так мало')
+      return;
+    }
+
+    if(e.target.files.length > 1){
+      alert('низя так много')
+      return;
+    }
+
+    const file = e.target.files[0];
+    const fileName = file["name"].split('.').reverse()[0]
+    if(file && fileName !== "wav"){  
+      alert('низяяяя!');
+      return;
+    }
   }
 
-  render() {
+  return (
+    <input
+      type="file"
+      onChange={handleChange}
+      ref={fileInput} />);
 
-    return (
-      <form className='file_input'>
-        <input
-          type="file"
-          ref={this.fileInput} />
-      </form>
-    );
-  }
 }
 
 export default FileInput;

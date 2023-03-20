@@ -5,11 +5,10 @@ import './Captcha.css';
 function Captcha() {
     const [disabled, setDisabled] = useState(true);
 
-    useEffect(() => {
-        loadCaptchaEnginge(7);
-    });
+    useEffect(() => loadCaptchaEnginge(7));
 
-    const captchaSubmit = () => {
+    const captchaSubmit = (e) => {
+        e.preventDefault();
 
         let user_captcha_value = document.getElementById('user_captcha_input').value;
 
@@ -17,7 +16,6 @@ function Captcha() {
             alert('Проверка пройдена, спасибо!');
             setDisabled(false)
         }
-
         else {
             alert('Введено неверное значение. Попробуйте еще раз!');
             setDisabled(true)
@@ -42,7 +40,8 @@ function Captcha() {
                         </input>
                     </div>
                     <button
-                        class="form_button_type-captcha"
+                        type='button'
+                        className="form_button_type-captcha"
                         onClick={captchaSubmit}>Submit
                     </button>
                 </div>

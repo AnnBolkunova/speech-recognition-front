@@ -6,6 +6,7 @@ import FileInput from '../FileInput/FileInput'
 import logo from '../../images/logo.png';
 
 function App() {
+
     const [disabled, setDisabled] = useState(true);
 
     function handleUploadFile(e) {
@@ -13,6 +14,7 @@ function App() {
 
         let reader = new FileReader();
         let file = e.target.files[0];
+
 
         reader.onloadend = () => {
             this.setState({
@@ -24,10 +26,10 @@ function App() {
         reader.readAsDataURL(file)
     }
 
-
-    function handleSendSumbit(file) {
+    function handleSendSumbit(e) {
+        e.preventDefault();
         const formData = new FormData();
-        formData.append('customFile', file);
+        //formData.append('customFile', file);
 
         api.sendFile()
             .then(res => {
