@@ -1,0 +1,29 @@
+.captcha {
+    max-width: 176px;
+    background: rgb(240, 240, 240);
+    color: #000;
+    margin-top: 20px;
+}
+
+.captcha_template {
+    background: rgb(240, 240, 240);
+}
+
+.captcha_input {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 15px;
+}
+
+.user_captcha_input {
+    background: rgb(240, 240, 240);
+    height: 50px;
+}
+
+.form_button_type-captcha {
+    width: 100%;
+    height: 25px;
+    margin: 0;
+    padding: 0;
+    background: rgb(240, 240, 240);
+}
